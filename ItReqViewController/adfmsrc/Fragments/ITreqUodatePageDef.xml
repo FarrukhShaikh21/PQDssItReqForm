@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31" id="ITreqUodatePageDef"
+                Package="Fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="DssItReqHeaderView1" RangeSize="25" DataControl="ITreqApplDataControl"
+              id="DssItReqHeaderView1Iterator" ChangeEventPolicy="none"/>
+    <iterator Binds="DssItReqLineView1" RangeSize="25" DataControl="ITreqApplDataControl"
+              id="DssItReqLineView1Iterator" ChangeEventPolicy="none"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="DssItReqHeaderView1Iterator" id="ReqName">
+      <AttrNames>
+        <Item Value="ReqName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DssItReqHeaderView1Iterator" id="ReqDesignation">
+      <AttrNames>
+        <Item Value="ReqDesignation"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DssItReqHeaderView1Iterator" id="ReqDepartment">
+      <AttrNames>
+        <Item Value="ReqDepartment"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DssItReqHeaderView1Iterator" id="ReqDate">
+      <AttrNames>
+        <Item Value="ReqDate"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="DssItReqHeaderView1Iterator" StaticList="false" Uses="LOV_ReqCompanyIdFk" id="ReqCompanyIdFk"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="DssItReqHeaderView1Iterator" StaticList="false" Uses="LOV_ReqForIdFk" id="ReqForIdFk"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="DssItReqHeaderView1Iterator" id="ReqContact">
+      <AttrNames>
+        <Item Value="ReqContact"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DssItReqHeaderView1Iterator" id="EmpName">
+      <AttrNames>
+        <Item Value="EmpName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DssItReqHeaderView1Iterator" id="EmpCode">
+      <AttrNames>
+        <Item Value="EmpCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DssItReqHeaderView1Iterator" id="EmpDesignation">
+      <AttrNames>
+        <Item Value="EmpDesignation"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DssItReqHeaderView1Iterator" id="EmpDept">
+      <AttrNames>
+        <Item Value="EmpDept"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="DssItReqHeaderView1Iterator" StaticList="false" Uses="LOV_EmpCompanyIdFk" id="EmpCompanyIdFk"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="DssItReqHeaderView1Iterator" StaticList="false" Uses="LOV_LocTypeIdFk" id="LocTypeIdFk"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="DssItReqHeaderView1Iterator" StaticList="false" Uses="LOV_EmpStatusIdFk" id="EmpStatusIdFk"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="DssItReqHeaderView1Iterator" id="HeadHr">
+      <AttrNames>
+        <Item Value="HeadHr"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DssItReqHeaderView1Iterator" id="HeadDept">
+      <AttrNames>
+        <Item Value="HeadDept"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DssItReqHeaderView1Iterator" id="HeadIt">
+      <AttrNames>
+        <Item Value="HeadIt"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DssItReqHeaderView1Iterator" id="RcvdBy">
+      <AttrNames>
+        <Item Value="RcvdBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DssItReqHeaderView1Iterator" id="RcvdDate">
+      <AttrNames>
+        <Item Value="RcvdDate"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="DssItReqHeaderView1Iterator" StaticList="false" Uses="LOV_ReqTypeIdFk" id="ReqTypeIdFk1"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="ITreqApplDataControl"/>
+    <action IterBinding="DssItReqLineView1Iterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <tree IterBinding="DssItReqLineView1Iterator" id="DssItReqLineView1">
+      <nodeDefinition DefName="pqt.dss.itReq.model.vo.DssItReqLineView" Name="DssItReqLineView10">
+        <AttrNames>
+          <Item Value="TypeIdFk"/>
+          <Item Value="LnItemIdFk"/>
+          <Item Value="LnRemarks"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="DssItReqLineView1Iterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="DssItReqHeaderView1Iterator" id="HdIdPk">
+      <AttrNames>
+        <Item Value="HdIdPk"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="DssItReqHeaderView1Iterator" StaticList="false" Uses="LOV_AgentName" id="AgentName"/>
+    <attributeValues IterBinding="DssItReqHeaderView1Iterator" id="ItRequestDocNo">
+      <AttrNames>
+        <Item Value="ItRequestDocNo"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="DssItReqHeaderView1Iterator" StaticList="false" Uses="LOV_BranchName" id="BranchName"/>
+    <methodAction id="Apply" RequiresUpdateModel="true" Action="invokeMethod" MethodName="Apply"
+                  IsViewObjectMethod="false" DataControl="ITreqApplDataControl"
+                  InstanceName="data.ITreqApplDataControl.dataProvider"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31" id="ITreqQueryPageDef"
+                Package="Fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="DssItReqHeaderView1" RangeSize="25" DataControl="ITreqApplDataControl"
+              id="DssItReqHeaderView1Iterator"/>
+    <searchRegion Criteria="DssItReqHeaderViewCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="DssItReqHeaderView1Iterator" id="DssItReqHeaderViewCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <action IterBinding="DssItReqHeaderView1Iterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <tree IterBinding="DssItReqHeaderView1Iterator" id="DssItReqHeaderView1">
+      <nodeDefinition DefName="pqt.dss.itReq.model.vo.DssItReqHeaderView" Name="DssItReqHeaderView10">
+        <AttrNames>
+          <Item Value="HdIdPk"/>
+          <Item Value="ItRequestDocNo"/>
+          <Item Value="ReqName"/>
+          <Item Value="ReqDepartment"/>
+          <Item Value="ReqDate"/>
+          <Item Value="WorkflowStatus"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="DssItReqHeaderView1Iterator" id="BranchStatus">
+      <AttrNames>
+        <Item Value="BranchStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DssItReqHeaderView1Iterator" id="DssStatus">
+      <AttrNames>
+        <Item Value="DssStatus"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

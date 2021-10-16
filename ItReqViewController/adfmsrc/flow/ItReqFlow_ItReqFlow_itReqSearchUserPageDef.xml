@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31"
+                id="ItReqFlow_ItReqFlow_itReqSearchUserPageDef" Package="flow" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="itReqSearchUser" RequiresUpdateModel="true" Action="invokeMethod" MethodName="itReqSearchUser"
+                  IsViewObjectMethod="true" DataControl="ITreqApplDataControl"
+                  InstanceName="data.ITreqApplDataControl.DssItReqHeaderView1"/>
+  </bindings>
+</pageDefinition>

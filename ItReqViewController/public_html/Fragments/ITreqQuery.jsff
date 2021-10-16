@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_Fragments_ITreqQuery-->
+    <af:panelGroupLayout layout="vertical" id="pgl1" binding="#{backingBeanScope.backing_Fragments_ITreqQuery.pgl1}">
+        <af:panelHeader text="Create page" id="ph1" binding="#{backingBeanScope.backing_Fragments_ITreqQuery.ph1}">
+            <af:query id="qryId1" headerText="Search" disclosed="true"
+                      value="#{bindings.DssItReqHeaderViewCriteriaQuery.queryDescriptor}"
+                      model="#{bindings.DssItReqHeaderViewCriteriaQuery.queryModel}"
+                      queryListener="#{bindings.DssItReqHeaderViewCriteriaQuery.processQuery}"
+                      queryOperationListener="#{bindings.DssItReqHeaderViewCriteriaQuery.processQueryOperation}"
+                      resultComponentId="::pc1:resId1" binding="#{backingBeanScope.backing_Fragments_ITreqQuery.qryId1}"
+                      saveQueryMode="hidden" modeChangeVisible="false"/>
+        </af:panelHeader>
+        <af:panelCollection id="pc1" binding="#{backingBeanScope.backing_Fragments_ITreqQuery.pc1}"
+                            styleClass="AFStretchWidth" featuresOff="detach viewMenu">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar">
+                <af:toolbar id="t1" binding="#{backingBeanScope.backing_Fragments_ITreqQuery.t1}">
+                    <af:button actionListener="#{bindings.CreateInsert.execute}" text="Create"
+                               disabled="#{!bindings.CreateInsert.enabled}" id="b1"
+                               binding="#{backingBeanScope.backing_Fragments_ITreqQuery.b1}" action="goCreate"/>
+                </af:toolbar>
+            </f:facet>
+            <f:facet name="statusbar"/>
+            <af:table value="#{bindings.DssItReqHeaderView1.collectionModel}" var="row"
+                      rows="#{bindings.DssItReqHeaderView1.rangeSize}"
+                      emptyText="#{bindings.DssItReqHeaderView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      rowBandingInterval="0"
+                      selectedRowKeys="#{bindings.DssItReqHeaderView1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.DssItReqHeaderView1.collectionModel.makeCurrent}"
+                      rowSelection="single" fetchSize="#{bindings.DssItReqHeaderView1.rangeSize}" id="resId1"
+                      partialTriggers="::pc1:b1 ::b1" binding="#{backingBeanScope.backing_Fragments_ITreqQuery.resId1}">
+                <af:column headerText="#{bindings.DssItReqHeaderView1.hints.HdIdPk.label}" id="c8" rendered="false">
+                    <af:inputText value="#{row.bindings.HdIdPk.inputValue}"
+                                  label="#{bindings.DssItReqHeaderView1.hints.HdIdPk.label}"
+                                  required="#{bindings.DssItReqHeaderView1.hints.HdIdPk.mandatory}"
+                                  columns="#{bindings.DssItReqHeaderView1.hints.HdIdPk.displayWidth}"
+                                  maximumLength="#{bindings.DssItReqHeaderView1.hints.HdIdPk.precision}"
+                                  shortDesc="#{bindings.DssItReqHeaderView1.hints.HdIdPk.tooltip}" id="it1">
+                        <f:validator binding="#{row.bindings.HdIdPk.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.DssItReqHeaderView1.hints.HdIdPk.format}"/>
+                    </af:inputText>
+                </af:column>
+                <af:column headerText="#{bindings.DssItReqHeaderView1.hints.ItRequestDocNo.label}" id="c6" width="200"
+                           align="center">
+                    <af:outputText value="#{row.ItRequestDocNo}"
+                                   shortDesc="#{bindings.DssItReqHeaderView1.hints.ItRequestDocNo.tooltip}" id="ot1"/>
+                </af:column>
+                <af:column headerText="#{bindings.DssItReqHeaderView1.hints.ReqName.label}" id="resId1c2" width="120"
+                           align="center">
+                    <af:outputText value="#{row.ReqName}"
+                                   shortDesc="#{bindings.DssItReqHeaderView1.hints.ReqName.tooltip}" id="ot2"/>
+                </af:column>
+                <af:column headerText="#{bindings.DssItReqHeaderView1.hints.ReqDepartment.label}" id="resId1c3"
+                           width="120" align="center">
+                    <af:outputText value="#{row.ReqDepartment}"
+                                   shortDesc="#{bindings.DssItReqHeaderView1.hints.ReqDepartment.tooltip}" id="ot3"/>
+                </af:column>
+                <af:column headerText="#{bindings.DssItReqHeaderView1.hints.ReqDate.label}" id="resId1c4" width="124"
+                           align="center">
+                    <af:outputText value="#{row.ReqDate}"
+                                   shortDesc="#{bindings.DssItReqHeaderView1.hints.ReqDate.tooltip}" id="ot4">
+                        <af:convertDateTime pattern="#{bindings.DssItReqHeaderView1.hints.ReqDate.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column headerText="#{bindings.DssItReqHeaderView1.hints.WorkflowStatus.label}" id="c3"
+                           align="center">
+                    <af:outputText value="#{row.WorkflowStatus}"
+                                   shortDesc="#{bindings.DssItReqHeaderView1.hints.WorkflowStatus.tooltip}" id="ot5"/>
+                </af:column>
+                <af:column id="c2" headerText="Detail" align="center" width="50">
+                    <af:link id="l2" icon="/images/detailsicon_enabled.gif" action="goDetail"/>
+                </af:column>
+                <af:column id="c1" headerText="Update" align="center" width="50">
+                    <af:link id="l1" icon="/images/updateicon_enabled.gif" action="goUpdate"
+                             disabled="#{row.WorkflowStatus eq 'APPROVED' or row.WorkflowStatus eq 'INPROCESS'}"/>
+                </af:column>
+                <af:column id="c5" align="center" headerText="Delete" width="50">
+                    <af:link id="l3" icon="/images/deleteicon_enabled.gif" action="goDelete"
+                             disabled="#{row.WorkflowStatus eq 'APPROVED' or row.WorkflowStatus eq 'INPROCESS'}"/>
+                </af:column>
+                <af:column id="c7" align="center" headerText="Report" width="50">
+                    <af:link id="l4" icon="/images/printLogo.gif"
+                             actionListener="#{CallReport.callDSSReports('DSS_IT_REQ', (row.bindings.HdIdPk.inputValue))}"/>
+                </af:column>
+            </af:table>
+        </af:panelCollection>
+    </af:panelGroupLayout>
+</ui:composition>

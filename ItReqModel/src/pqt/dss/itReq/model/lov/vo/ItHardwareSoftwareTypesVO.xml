@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ItHardwareSoftwareTypesVO"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Variable
+    Name="p_item_type"
+    Kind="viewcriteria"
+    Type="oracle.jbo.domain.Number"/>
+  <SQLQuery><![CDATA[SELECT DssItHardwareSoftwareTypes.HRD_ID_PK, 
+       DssItHardwareSoftwareTypes.HRD_VALUE, 
+       DssItHardwareSoftwareTypes.IT_TYPE_FK 
+FROM DSS_IT_HARDWARE_SOFTWARE_ITEMS DssItHardwareSoftwareTypes]]></SQLQuery>
+  <ViewAttribute
+    Name="HrdIdPk"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="HRD_ID_PK"
+    Expression="HRD_ID_PK"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="HrdValue"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="HRD_VALUE"
+    Expression="HRD_VALUE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ItTypeFk"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="IT_TYPE_FK"
+    Expression="IT_TYPE_FK"
+    SQLType="NUMERIC"/>
+  <ViewCriteria
+    Name="ItHardwareSoftwareTypesVOCriteria"
+    ViewObjectName="pqt.dss.itReq.model.lov.vo.ItHardwareSoftwareTypesVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="ItHardwareSoftwareTypesVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="ItTypeFk"
+        ViewAttribute="ItTypeFk"
+        Operator="="
+        Conjunction="AND"
+        Value=":p_item_type"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="HrdIdPk"/>
+  </AttrArray>
+</ViewObject>

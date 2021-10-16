@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.0.31" id="DataBindings"
+             SeparateXMLFiles="false" Package="pqt.dss.itReq.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/WEB-INF/flow/ItReqFlow.xml#ItReqFlow@CreateInsert"
+          usageId="pqt_dss_itReq_view_ItReqFlow_ItReqFlow_CreateInsertPageDef"/>
+    <page path="/WEB-INF/flow/ItReqFlow.xml#ItReqFlow@Rollback"
+          usageId="pqt_dss_itReq_view_ItReqFlow_ItReqFlow_RollbackPageDef"/>
+    <page path="/Fragments/ITreqQuery.jsff" usageId="pqt_dss_itReq_view_ITreqQueryPageDef"/>
+    <page path="/ITreqPage.jsf" usageId="pqt_dss_itReq_view_ITreqPagePageDef"/>
+    <page path="/Fragments/ITreqUodate.jsff" usageId="pqt_dss_itReq_view_ITreqUodatePageDef"/>
+    <page path="/Fragments/ITreqDetail.jsff" usageId="pqt_dss_itReq_view_ITreqDetailPageDef"/>
+    <page path="/itNotification.jsf" usageId="pqt_dss_itReq_view_itNotificationPageDef"/>
+    <page path="/WEB-INF/flow/ItReqFlow.xml#ItReqFlow@DeleteCommit"
+          usageId="pqt_dss_itReq_view_ItReqFlow_ItReqFlow_DeleteCommitPageDef"/>
+    <page path="/WEB-INF/flow/ItReqFlow.xml#ItReqFlow@Delete"
+          usageId="pqt_dss_itReq_view_ItReqFlow_ItReqFlow_DeletePageDef"/>
+    <page path="/Fragments/itNotification.jsff" usageId="pqt_dss_itReq_view_itNotificationPageDef1"/>
+    <page path="/WEB-INF/flow/it-notification-task-flow-definition.xml#it-notification-task-flow-definition@setNVC_WfDocumentId"
+          usageId="pqt_dss_itReq_view_it_notification_task_flow_definition_it_notification_task_flow_definition_setNVC_WfDocumentIdPageDef"/>
+    <page path="/WEB-INF/flow/ItReqFlow.xml#ItReqFlow@itReqSearchUser"
+          usageId="pqt_dss_itReq_view_ItReqFlow_ItReqFlow_itReqSearchUserPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="pqt_dss_itReq_view_ItReqFlow_ItReqFlow_CreateInsertPageDef"
+          path="flow.ItReqFlow_ItReqFlow_CreateInsertPageDef"/>
+    <page id="pqt_dss_itReq_view_ItReqFlow_ItReqFlow_RollbackPageDef" path="flow.ItReqFlow_ItReqFlow_RollbackPageDef"/>
+    <page id="pqt_dss_itReq_view_ITreqQueryPageDef" path="Fragments.ITreqQueryPageDef"/>
+    <page id="pqt_dss_itReq_view_ITreqPagePageDef" path="pqt.dss.itReq.view.pageDefs.ITreqPagePageDef"/>
+    <page id="pqt_dss_itReq_view_ITreqUodatePageDef" path="Fragments.ITreqUodatePageDef"/>
+    <page id="pqt_dss_itReq_view_ITreqDetailPageDef" path="Fragments.ITreqDetailPageDef"/>
+    <page id="pqt_dss_itReq_view_itNotificationPageDef" path="pqt.dss.itReq.view.pageDefs.itNotificationPageDef"/>
+    <page id="pqt_dss_itReq_view_ItReqFlow_ItReqFlow_DeleteCommitPageDef"
+          path="flow.ItReqFlow_ItReqFlow_DeleteCommitPageDef"/>
+    <page id="pqt_dss_itReq_view_ItReqFlow_ItReqFlow_DeletePageDef" path="flow.ItReqFlow_ItReqFlow_DeletePageDef"/>
+    <page id="pqt_dss_itReq_view_itNotificationPageDef1" path="Fragments.itNotificationPageDef"/>
+    <page id="pqt_dss_itReq_view_it_notification_task_flow_definition_it_notification_task_flow_definition_setNVC_WfDocumentIdPageDef"
+          path="flow.it_notification_task_flow_definition_it_notification_task_flow_definition_setNVC_WfDocumentIdPageDef"/>
+    <page id="pqt_dss_itReq_view_ItReqFlow_ItReqFlow_itReqSearchUserPageDef"
+          path="flow.ItReqFlow_ItReqFlow_itReqSearchUserPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="ITreqApplDataControl" Package="pqt.dss.itReq.model.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="ITreqApplLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

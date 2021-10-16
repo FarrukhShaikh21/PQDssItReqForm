@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="HdAndLnRelation"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge"
+  EntityAssociation="pqt.dss.itReq.model.asc.HdAndLnRelation">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="pqt.dss.itReq.model.vl.HdAndLnRelation_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="DssItReqHeaderView"
+    Cardinality="1"
+    Source="true"
+    Owner="pqt.dss.itReq.model.vo.DssItReqHeaderView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="DssItReqHeaderView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="pqt.dss.itReq.model.vo.DssItReqHeaderView.HdIdPk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="DssItReqLineView"
+    Cardinality="-1"
+    Owner="pqt.dss.itReq.model.vo.DssItReqLineView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="DssItReqLineView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="pqt.dss.itReq.model.vo.DssItReqLineView.HdIdFk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="pqt.dss.itReq.model.ItReqModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

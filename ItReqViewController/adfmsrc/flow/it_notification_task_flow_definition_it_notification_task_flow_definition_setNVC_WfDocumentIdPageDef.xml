@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31"
+                id="it_notification_task_flow_definition_it_notification_task_flow_definition_setNVC_WfDocumentIdPageDef"
+                Package="flow" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="setNVC_WfDocumentId" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="setNVC_WfDocumentId" IsViewObjectMethod="true" DataControl="ITreqApplDataControl"
+                  InstanceName="data.ITreqApplDataControl.DssItReqHeaderView1">
+      <NamedData NDName="value"
+                 NDValue="#{pageFlowScope.NVC_wfDocumentId == null ? 123 : pageFlowScope.NVC_wfDocumentId}"
+                 NDType="oracle.jbo.domain.Number"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

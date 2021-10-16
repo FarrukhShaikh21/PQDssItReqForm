@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DssItReqLine"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="DSS_IT_REQ_LINE"
+  AliasName="DssItReqLine"
+  BindingStyle="OracleName"
+  RowClass="pqt.dss.itReq.model.eo.DssItReqLineImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Access|DML"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="LnIdPk"
+    ColumnName="LN_ID_PK"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="DSS_IT_REQ_LINE"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="HdIdFk"
+    ColumnName="HD_ID_FK"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="DSS_IT_REQ_LINE"/>
+  <Attribute
+    Name="TypeIdFk"
+    Precision="15"
+    ColumnName="TYPE_ID_FK"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DSS_IT_REQ_LINE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UserIdFk"
+    ColumnName="USER_ID_FK"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="DSS_IT_REQ_LINE"/>
+  <Attribute
+    Name="EnterDate"
+    ColumnName="ENTER_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="DSS_IT_REQ_LINE"/>
+  <Attribute
+    Name="LastUpdatedBy"
+    ColumnName="LAST_UPDATED_BY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="DSS_IT_REQ_LINE"/>
+  <Attribute
+    Name="LastUpdatedDate"
+    ColumnName="LAST_UPDATED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="DSS_IT_REQ_LINE"/>
+  <Attribute
+    Name="LnItemIdFk"
+    ColumnName="LN_ITEM_ID_FK"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="DSS_IT_REQ_LINE"/>
+  <Attribute
+    Name="LnRemarks"
+    Precision="200"
+    ColumnName="LN_REMARKS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DSS_IT_REQ_LINE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="DssItReqHeader"
+    Association="pqt.dss.itReq.model.asc.HdAndLnRelation"
+    AssociationEnd="pqt.dss.itReq.model.asc.HdAndLnRelation.DssItReqHeader"
+    AssociationOtherEnd="pqt.dss.itReq.model.asc.HdAndLnRelation.DssItReqLine"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="DssitreqlinePrimaryKey"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="DSSITREQLINE_PRIMARY_KEY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="pqt.dss.itReq.model.eo.DssItReqLine.LnIdPk"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_DssItReqLine">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="HD_ID_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_DSS_IT_REQ_LINE"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="pqt.dss.itReq.model.eo.DssItReqLine.HdIdFk"/>
+    </AttrArray>
+  </Key>
+</Entity>

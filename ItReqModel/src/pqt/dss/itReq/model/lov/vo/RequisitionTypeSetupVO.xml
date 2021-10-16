@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RequisitionTypeSetupVO"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <SQLQuery><![CDATA[SELECT DssRequisitionTypeSetup.REQ_TYPE_ID,
+       DssRequisitionTypeSetup.REQ_TYPE_DESC
+FROM DSS_REQUISITION_TYPE_SETUP DssRequisitionTypeSetup]]></SQLQuery>
+  <ViewAttribute
+    Name="ReqTypeId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="REQ_TYPE_ID"
+    Expression="REQ_TYPE_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="ReqTypeDesc"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="REQ_TYPE_DESC"
+    Expression="REQ_TYPE_DESC"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="ReqTypeId"/>
+  </AttrArray>
+</ViewObject>

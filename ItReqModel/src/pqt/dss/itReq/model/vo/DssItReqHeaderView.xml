@@ -1,0 +1,849 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DssItReqHeaderView"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  ComponentClass="pqt.dss.itReq.model.vo.DssItReqHeaderViewImpl"
+  ComponentInterface="pqt.dss.itReq.model.vo.common.DssItReqHeaderView"
+  ClientProxyName="pqt.dss.itReq.model.vo.client.DssItReqHeaderViewClient">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Coll|VarAccess"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Variable
+    Name="VC_Emp_Code"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="VC_Emp_Name"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="NVC_WfDocumentId"
+    Kind="viewcriteria"
+    Type="oracle.jbo.domain.Number"/>
+  <Variable
+    Name="VC_Doc_No"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <ViewAccessor
+    Name="CompanyVO1"
+    ViewObjectName="pqt.dss.itReq.model.lov.vo.CompanyVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="RequestedForSetupVO1"
+    ViewObjectName="pqt.dss.itReq.model.lov.vo.RequestedForSetupVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="BranchVO1"
+    ViewObjectName="pqt.dss.itReq.model.lov.vo.BranchVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="BranchVOCriteria"
+      FullName="pqt.dss.itReq.model.lov.vo.BranchVO.BranchVOCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="VC_UserIdFk">
+        <TransientExpression
+          trustMode="trusted"
+          Name="ExpressionScript"><![CDATA[UserIdFk]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="EmpStatusTypesVO1"
+    ViewObjectName="pqt.dss.itReq.model.lov.vo.EmpStatusTypesVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="LocationTypesSetupVO1"
+    ViewObjectName="pqt.dss.itReq.model.lov.vo.LocationTypesSetupVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="RequisitionTypeSetupVO1"
+    ViewObjectName="pqt.dss.itReq.model.lov.vo.RequisitionTypeSetupVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="agentDetailLOV1"
+    ViewObjectName="pqt.dss.itReq.model.lov.vo.agentDetailLOV"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="agentDetailLOVCriteria"
+      FullName="pqt.dss.itReq.model.lov.vo.agentDetailLOV.agentDetailLOVCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="VC_Branch_Code">
+        <TransientExpression
+          trustMode="trusted"
+          Name="ExpressionScript"><![CDATA[VBranchCodeFk]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_AgentName"
+    ListVOName="agentDetailLOV1"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="AgentName"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="AgentCode"/>
+      <Item Value="AgentNoFk"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="AgentName"/>
+      <Item Value="VAgentCode"/>
+      <Item Value="NAgentNo"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="AgentName"/>
+      <Item Value="VAgentCode"/>
+      <Item Value="MgrAgentName"/>
+      <Item Value="AgentRank"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="agentDetailLOVCriteria"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_LocTypeIdFk"
+    ListVOName="LocationTypesSetupVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="LocTypeIdFk"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LocTypeId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LocTypeDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ReqCompanyIdFk"
+    ListVOName="CompanyVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ReqCompanyIdFk"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Companyid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Companyname"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ReqForIdFk"
+    ListVOName="RequestedForSetupVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ReqForIdFk"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ReqForId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ReqForDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_EmpCompanyIdFk"
+    ListVOName="CompanyVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="EmpCompanyIdFk"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Companyid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Companyname"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_EmpStatusIdFk"
+    ListVOName="EmpStatusTypesVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="EmpStatusIdFk"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="EmpStatusId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="EmpStatusDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ReqTypeIdFk"
+    ListVOName="RequisitionTypeSetupVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ReqTypeIdFk"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ReqTypeId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ReqTypeDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_BranchName"
+    ListVOName="BranchVO1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="BranchName"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="VBranchCodeFk"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="VBranchName"/>
+      <Item Value="VBranchCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="VBranchCode"/>
+      <Item Value="VBranchName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery><![CDATA[SELECT DssItReqHeader.AGENT_NO_FK,            
+       DssItReqHeader.BRANCH_NOTIF_ID_FK,            
+       DssItReqHeader.BRANCH_STATUS,            
+       DssItReqHeader.DSS_NOTIF_ID_FK,            
+       DssItReqHeader.DSS_STATUS,            
+       DssItReqHeader.EMP_CODE,            
+       DssItReqHeader.EMP_COMPANY_ID_FK,            
+       DssItReqHeader.EMP_DEPT,            
+       DssItReqHeader.EMP_DESIGNATION,            
+       DssItReqHeader.EMP_NAME,            
+       DssItReqHeader.EMP_STATUS_ID_FK,            
+       DssItReqHeader.ENTER_DATE,            
+       DssItReqHeader.HD_ID_PK,            
+       DssItReqHeader.HEAD_DEPT,            
+       DssItReqHeader.HEAD_HR,            
+       DssItReqHeader.HEAD_IT,            
+       DssItReqHeader.LAST_UPDATED_BY,            
+       DssItReqHeader.LAST_UPDATED_DATE,            
+       DssItReqHeader.LN_ID_FK,            
+       DssItReqHeader.LOC_TYPE_ID_FK,            
+       DssItReqHeader.RCVD_BY,            
+       DssItReqHeader.RCVD_DATE,            
+       DssItReqHeader.REQ_COMPANY_ID_FK,            
+       DssItReqHeader.REQ_CONTACT,            
+       DssItReqHeader.REQ_DATE,            
+       DssItReqHeader.REQ_DEPARTMENT,            
+       DssItReqHeader.REQ_DESIGNATION,            
+       DssItReqHeader.REQ_FOR_ID_FK,            
+       DssItReqHeader.REQ_NAME,            
+       DssItReqHeader.REQ_TYPE_ID_FK,            
+       DssItReqHeader.USER_ID_FK,            
+       DssItReqHeader.V_BRANCH_CODE_FK,          
+       DssItReqHeader.It_Request_Doc_No,     
+       (SELECT BR.V_BRANCH_NAME                             
+          FROM VU_DSS_ST_BRANCH BR                             
+         WHERE BR.V_BRANCH_CODE = DssItReqHeader.V_BRANCH_CODE_FK) BRANCH_NAME,      
+       (select ag.V_AGENT_CODE from vu_dss_it_Agent_Detail ag          
+       where ag.N_AGENT_NO = DssItReqHeader.Agent_No_Fk) Agent_Code,          
+       (select ag.AGENT_NAME from vu_dss_it_Agent_Detail ag          
+       where ag.N_AGENT_NO = DssItReqHeader.Agent_No_Fk) Agent_Name, 
+       DssItReqHeader.Workflow_Status, 
+       DssItReqHeader.Workflow_Notification_Id 
+FROM  DSS_IT_REQ_HEADER DssItReqHeader]]></SQLQuery>
+  <EntityUsage
+    Name="DssItReqHeader"
+    Entity="pqt.dss.itReq.model.eo.DssItReqHeader"/>
+  <ViewAttribute
+    Name="AgentNoFk"
+    PrecisionRule="true"
+    EntityAttrName="AgentNoFk"
+    EntityUsage="DssItReqHeader"
+    AliasName="AGENT_NO_FK"/>
+  <ViewAttribute
+    Name="BranchNotifIdFk"
+    PrecisionRule="true"
+    EntityAttrName="BranchNotifIdFk"
+    EntityUsage="DssItReqHeader"
+    AliasName="BRANCH_NOTIF_ID_FK"/>
+  <ViewAttribute
+    Name="BranchStatus"
+    PrecisionRule="true"
+    EntityAttrName="BranchStatus"
+    EntityUsage="DssItReqHeader"
+    AliasName="BRANCH_STATUS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="pqt.dss.itReq.model.vo.DssItReqHeaderView.BranchStatus_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DssNotifIdFk"
+    PrecisionRule="true"
+    EntityAttrName="DssNotifIdFk"
+    EntityUsage="DssItReqHeader"
+    AliasName="DSS_NOTIF_ID_FK"/>
+  <ViewAttribute
+    Name="DssStatus"
+    PrecisionRule="true"
+    EntityAttrName="DssStatus"
+    EntityUsage="DssItReqHeader"
+    AliasName="DSS_STATUS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="pqt.dss.itReq.model.vo.DssItReqHeaderView.DssStatus_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EmpCode"
+    PrecisionRule="true"
+    EntityAttrName="EmpCode"
+    EntityUsage="DssItReqHeader"
+    AliasName="EMP_CODE"/>
+  <ViewAttribute
+    Name="EmpCompanyIdFk"
+    PrecisionRule="true"
+    EntityAttrName="EmpCompanyIdFk"
+    EntityUsage="DssItReqHeader"
+    AliasName="EMP_COMPANY_ID_FK"
+    LOVName="LOV_EmpCompanyIdFk">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="pqt.dss.itReq.model.vo.DssItReqHeaderView.EmpCompanyIdFk_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EmpDept"
+    PrecisionRule="true"
+    EntityAttrName="EmpDept"
+    EntityUsage="DssItReqHeader"
+    AliasName="EMP_DEPT"/>
+  <ViewAttribute
+    Name="EmpDesignation"
+    PrecisionRule="true"
+    EntityAttrName="EmpDesignation"
+    EntityUsage="DssItReqHeader"
+    AliasName="EMP_DESIGNATION"/>
+  <ViewAttribute
+    Name="EmpName"
+    PrecisionRule="true"
+    EntityAttrName="EmpName"
+    EntityUsage="DssItReqHeader"
+    AliasName="EMP_NAME"/>
+  <ViewAttribute
+    Name="EmpStatusIdFk"
+    PrecisionRule="true"
+    EntityAttrName="EmpStatusIdFk"
+    EntityUsage="DssItReqHeader"
+    AliasName="EMP_STATUS_ID_FK"
+    LOVName="LOV_EmpStatusIdFk">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="pqt.dss.itReq.model.vo.DssItReqHeaderView.EmpStatusIdFk_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EnterDate"
+    PrecisionRule="true"
+    EntityAttrName="EnterDate"
+    EntityUsage="DssItReqHeader"
+    AliasName="ENTER_DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="pqt.dss.itReq.model.vo.DssItReqHeaderView.EnterDate_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="pqt.dss.itReq.model.vo.DssItReqHeaderView.EnterDate_FMT_FORMAT"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="HdIdPk"
+    PrecisionRule="true"
+    EntityAttrName="HdIdPk"
+    EntityUsage="DssItReqHeader"
+    AliasName="HD_ID_PK"
+    IsNotNull="true"/>
+  <ViewAttribute
+    Name="HeadDept"
+    PrecisionRule="true"
+    EntityAttrName="HeadDept"
+    EntityUsage="DssItReqHeader"
+    AliasName="HEAD_DEPT">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="pqt.dss.itReq.model.vo.DssItReqHeaderView.HeadDept_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="HeadHr"
+    PrecisionRule="true"
+    EntityAttrName="HeadHr"
+    EntityUsage="DssItReqHeader"
+    AliasName="HEAD_HR">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="pqt.dss.itReq.model.vo.DssItReqHeaderView.HeadHr_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="HeadIt"
+    PrecisionRule="true"
+    EntityAttrName="HeadIt"
+    EntityUsage="DssItReqHeader"
+    AliasName="HEAD_IT">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="pqt.dss.itReq.model.vo.DssItReqHeaderView.HeadIt_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="DssItReqHeader"
+    AliasName="LAST_UPDATED_BY"/>
+  <ViewAttribute
+    Name="LastUpdatedDate"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedDate"
+    EntityUsage="DssItReqHeader"
+    AliasName="LAST_UPDATED_DATE"/>
+  <ViewAttribute
+    Name="LnIdFk"
+    PrecisionRule="true"
+    EntityAttrName="LnIdFk"
+    EntityUsage="DssItReqHeader"
+    AliasName="LN_ID_FK"/>
+  <ViewAttribute
+    Name="LocTypeIdFk"
+    PrecisionRule="true"
+    EntityAttrName="LocTypeIdFk"
+    EntityUsage="DssItReqHeader"
+    AliasName="LOC_TYPE_ID_FK"
+    LOVName="LOV_LocTypeIdFk">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RcvdBy"
+    PrecisionRule="true"
+    EntityAttrName="RcvdBy"
+    EntityUsage="DssItReqHeader"
+    AliasName="RCVD_BY">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="pqt.dss.itReq.model.vo.DssItReqHeaderView.RcvdBy_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RcvdDate"
+    PrecisionRule="true"
+    EntityAttrName="RcvdDate"
+    EntityUsage="DssItReqHeader"
+    AliasName="RCVD_DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="pqt.dss.itReq.model.vo.DssItReqHeaderView.RcvdDate_LABEL"/>
+        <FMT_FORMATTER
+          ResId="pqt.dss.itReq.model.vo.DssItReqHeaderView.RcvdDate_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="pqt.dss.itReq.model.vo.DssItReqHeaderView.RcvdDate_FMT_FORMAT"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ReqCompanyIdFk"
+    PrecisionRule="true"
+    EntityAttrName="ReqCompanyIdFk"
+    EntityUsage="DssItReqHeader"
+    AliasName="REQ_COMPANY_ID_FK"
+    LOVName="LOV_ReqCompanyIdFk">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="pqt.dss.itReq.model.vo.DssItReqHeaderView.ReqCompanyIdFk_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ReqContact"
+    PrecisionRule="true"
+    EntityAttrName="ReqContact"
+    EntityUsage="DssItReqHeader"
+    AliasName="REQ_CONTACT"/>
+  <ViewAttribute
+    Name="ReqDate"
+    PrecisionRule="true"
+    EntityAttrName="ReqDate"
+    EntityUsage="DssItReqHeader"
+    AliasName="REQ_DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMAT
+          ResId="pqt.dss.itReq.model.vo.DssItReqHeaderView.ReqDate_FMT_FORMAT"/>
+        <FMT_FORMATTER
+          ResId="pqt.dss.itReq.model.vo.DssItReqHeaderView.ReqDate_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ReqDepartment"
+    PrecisionRule="true"
+    EntityAttrName="ReqDepartment"
+    EntityUsage="DssItReqHeader"
+    AliasName="REQ_DEPARTMENT"/>
+  <ViewAttribute
+    Name="ReqDesignation"
+    PrecisionRule="true"
+    EntityAttrName="ReqDesignation"
+    EntityUsage="DssItReqHeader"
+    AliasName="REQ_DESIGNATION"/>
+  <ViewAttribute
+    Name="ReqForIdFk"
+    PrecisionRule="true"
+    EntityAttrName="ReqForIdFk"
+    EntityUsage="DssItReqHeader"
+    AliasName="REQ_FOR_ID_FK"
+    LOVName="LOV_ReqForIdFk">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="pqt.dss.itReq.model.vo.DssItReqHeaderView.ReqForIdFk_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ReqName"
+    PrecisionRule="true"
+    EntityAttrName="ReqName"
+    EntityUsage="DssItReqHeader"
+    AliasName="REQ_NAME"/>
+  <ViewAttribute
+    Name="ReqTypeIdFk"
+    PrecisionRule="true"
+    EntityAttrName="ReqTypeIdFk"
+    EntityUsage="DssItReqHeader"
+    AliasName="REQ_TYPE_ID_FK"
+    LOVName="LOV_ReqTypeIdFk">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="pqt.dss.itReq.model.vo.DssItReqHeaderView.ReqTypeIdFk_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UserIdFk"
+    PrecisionRule="true"
+    EntityAttrName="UserIdFk"
+    EntityUsage="DssItReqHeader"
+    AliasName="USER_ID_FK"/>
+  <ViewAttribute
+    Name="VBranchCodeFk"
+    PrecisionRule="true"
+    EntityAttrName="VBranchCodeFk"
+    EntityUsage="DssItReqHeader"
+    AliasName="V_BRANCH_CODE_FK">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="pqt.dss.itReq.model.vo.DssItReqHeaderView.VBranchCodeFk_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ItRequestDocNo"
+    PrecisionRule="true"
+    EntityAttrName="ItRequestDocNo"
+    EntityUsage="DssItReqHeader"
+    AliasName="IT_REQUEST_DOC_NO">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="pqt.dss.itReq.model.vo.DssItReqHeaderView.ItRequestDocNo_LABEL"/>
+        <DISPLAYWIDTH
+          Value="50"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BranchName"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="500"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="BRANCH_NAME"
+    Expression="BRANCH_NAME"
+    SQLType="VARCHAR"
+    LOVName="LOV_BranchName">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="pqt.dss.itReq.model.vo.DssItReqHeaderView.BranchName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="50"/>
+        <CONTROLTYPE
+          Value="combo"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AgentCode"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="AGENT_CODE"
+    Expression="AGENT_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="pqt.dss.itReq.model.vo.DssItReqHeaderView.AgentCode_LABEL"/>
+        <DISPLAYWIDTH
+          Value="50"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AgentName"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="AGENT_NAME"
+    Expression="AGENT_NAME"
+    SQLType="VARCHAR"
+    LOVName="LOV_AgentName">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="pqt.dss.itReq.model.vo.DssItReqHeaderView.AgentName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="50"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="WorkflowStatus"
+    PrecisionRule="true"
+    EntityAttrName="WorkflowStatus"
+    EntityUsage="DssItReqHeader"
+    AliasName="WORKFLOW_STATUS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="pqt.dss.itReq.model.vo.DssItReqHeaderView.WorkflowStatus_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="WorkflowNotificationId"
+    PrecisionRule="true"
+    EntityAttrName="WorkflowNotificationId"
+    EntityUsage="DssItReqHeader"
+    AliasName="WORKFLOW_NOTIFICATION_ID"/>
+  <ViewCriteria
+    Name="DssItReqHeaderViewCriteria"
+    ViewObjectName="pqt.dss.itReq.model.vo.DssItReqHeaderView"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="DssItReqHeaderViewCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="EmpCode"
+        ViewAttribute="EmpCode"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Value=":VC_Emp_Code"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="EmpName"
+        ViewAttribute="EmpName"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Value=":VC_Emp_Name"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="ItRequestDocNo"
+        ViewAttribute="ItRequestDocNo"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Value=":VC_Doc_No"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="NotificationViewCriteria"
+    ViewObjectName="pqt.dss.itReq.model.vo.DssItReqHeaderView"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="NotificationViewCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="HdIdPk"
+        ViewAttribute="HdIdPk"
+        Operator="="
+        Conjunction="AND"
+        Value=":NVC_WfDocumentId"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewLinkAccessor
+    Name="DssItReqLineView"
+    ViewLink="pqt.dss.itReq.model.vl.HdAndLnRelation"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="itReqSearchUser"
+      MethodName="itReqSearchUser">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="setNVC_WfDocumentId"
+      MethodName="setNVC_WfDocumentId">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="value"
+        Type="oracle.jbo.domain.Number"/>
+    </Method>
+  </ClientInterface>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="pqt.dss.itReq.model.ItReqModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

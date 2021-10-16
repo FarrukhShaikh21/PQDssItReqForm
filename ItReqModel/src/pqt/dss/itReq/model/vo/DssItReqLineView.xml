@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DssItReqLineView"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  SelectList="DssItReqLine.LN_ID_PK, 
+       DssItReqLine.HD_ID_FK, 
+       DssItReqLine.TYPE_ID_FK, 
+       DssItReqLine.USER_ID_FK, 
+       DssItReqLine.ENTER_DATE, 
+       DssItReqLine.LAST_UPDATED_BY, 
+       DssItReqLine.LAST_UPDATED_DATE, 
+       DssItReqLine.LN_ITEM_ID_FK, 
+       DssItReqLine.LN_REMARKS"
+  FromList="DSS_IT_REQ_LINE DssItReqLine">
+  <ViewAccessor
+    Name="TypeSetupVO1"
+    ViewObjectName="pqt.dss.itReq.model.lov.vo.TypeSetupVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="ItHardwareSoftwareTypesVO1"
+    ViewObjectName="pqt.dss.itReq.model.lov.vo.ItHardwareSoftwareTypesVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="ItHardwareSoftwareTypesVOCriteria"
+      FullName="pqt.dss.itReq.model.lov.vo.ItHardwareSoftwareTypesVO.ItHardwareSoftwareTypesVOCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="p_item_type">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[TypeIdFk]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_TypeIdFk"
+    ListVOName="TypeSetupVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="TypeIdFk"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="TypeIdPk"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="TypeDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_LnItemIdFk"
+    ListVOName="ItHardwareSoftwareTypesVO1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="LnItemIdFk"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="HrdIdPk"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="HrdValue"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="DssItReqLine"
+    Entity="pqt.dss.itReq.model.eo.DssItReqLine"/>
+  <ViewAttribute
+    Name="LnIdPk"
+    PrecisionRule="true"
+    EntityAttrName="LnIdPk"
+    EntityUsage="DssItReqLine"
+    AliasName="LN_ID_PK"/>
+  <ViewAttribute
+    Name="HdIdFk"
+    PrecisionRule="true"
+    EntityAttrName="HdIdFk"
+    EntityUsage="DssItReqLine"
+    AliasName="HD_ID_FK"/>
+  <ViewAttribute
+    Name="TypeIdFk"
+    PrecisionRule="true"
+    EntityAttrName="TypeIdFk"
+    EntityUsage="DssItReqLine"
+    AliasName="TYPE_ID_FK"
+    LOVName="LOV_TypeIdFk">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="pqt.dss.itReq.model.vo.DssItReqLineView.TypeIdFk_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UserIdFk"
+    PrecisionRule="true"
+    EntityAttrName="UserIdFk"
+    EntityUsage="DssItReqLine"
+    AliasName="USER_ID_FK"/>
+  <ViewAttribute
+    Name="EnterDate"
+    PrecisionRule="true"
+    EntityAttrName="EnterDate"
+    EntityUsage="DssItReqLine"
+    AliasName="ENTER_DATE"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="DssItReqLine"
+    AliasName="LAST_UPDATED_BY"/>
+  <ViewAttribute
+    Name="LastUpdatedDate"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedDate"
+    EntityUsage="DssItReqLine"
+    AliasName="LAST_UPDATED_DATE"/>
+  <ViewAttribute
+    Name="LnItemIdFk"
+    PrecisionRule="true"
+    EntityAttrName="LnItemIdFk"
+    EntityUsage="DssItReqLine"
+    AliasName="LN_ITEM_ID_FK"
+    LOVName="LOV_LnItemIdFk">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="pqt.dss.itReq.model.vo.DssItReqLineView.LnItemIdFk_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LnRemarks"
+    PrecisionRule="true"
+    EntityAttrName="LnRemarks"
+    EntityUsage="DssItReqLine"
+    AliasName="LN_REMARKS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="pqt.dss.itReq.model.vo.DssItReqLineView.LnRemarks_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="pqt.dss.itReq.model.ItReqModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

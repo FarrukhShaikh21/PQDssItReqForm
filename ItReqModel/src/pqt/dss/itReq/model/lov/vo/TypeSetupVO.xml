@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="TypeSetupVO"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <SQLQuery><![CDATA[SELECT DssItTypeSetup.TYPE_ID_PK,
+       DssItTypeSetup.TYPE_DESC
+FROM DSS_IT_TYPE_SETUP DssItTypeSetup]]></SQLQuery>
+  <ViewAttribute
+    Name="TypeIdPk"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="TYPE_ID_PK"
+    Expression="TYPE_ID_PK"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="TypeDesc"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="TYPE_DESC"
+    Expression="TYPE_DESC"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="TypeIdPk"/>
+  </AttrArray>
+</ViewObject>
