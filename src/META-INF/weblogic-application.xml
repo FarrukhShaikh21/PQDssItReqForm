@@ -8,6 +8,11 @@
   <listener>
     <listener-class>oracle.mds.lcm.weblogic.WLLifecycleListener</listener-class>
   </listener>
+  <module>
+    <name>DSSConn</name>
+    <type>JDBC</type>
+    <path>META-INF/DSSConn-jdbc.xml</path>
+  </module>
   <library-ref>
     <library-name>adf.oracle.domain</library-name>
   </library-ref>

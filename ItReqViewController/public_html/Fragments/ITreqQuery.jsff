@@ -18,7 +18,7 @@
             <f:facet name="toolbar">
                 <af:toolbar id="t1" binding="#{backingBeanScope.backing_Fragments_ITreqQuery.t1}">
                     <af:button actionListener="#{bindings.CreateInsert.execute}" text="Create"
-                               disabled="#{!bindings.CreateInsert.enabled}" id="b1"
+                               disabled="#{sessionScope.SSV_UserType != 'BO'}" id="b1"
                                binding="#{backingBeanScope.backing_Fragments_ITreqQuery.b1}" action="goCreate"/>
                 </af:toolbar>
             </f:facet>

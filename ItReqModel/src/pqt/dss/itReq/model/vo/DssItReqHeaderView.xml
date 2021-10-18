@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="DssItReqHeaderView"
-  Version="12.2.1.0.31"
+  Version="12.2.1.11.57"
   InheritPersonalization="merge"
   BindingStyle="OracleName"
   CustomQuery="true"
@@ -50,7 +50,6 @@
     <ParameterMap>
       <PIMap Variable="VC_UserIdFk">
         <TransientExpression
-          trustMode="trusted"
           Name="ExpressionScript"><![CDATA[UserIdFk]]></TransientExpression>
       </PIMap>
     </ParameterMap>
@@ -77,11 +76,14 @@
     <ParameterMap>
       <PIMap Variable="VC_Branch_Code">
         <TransientExpression
-          trustMode="trusted"
           Name="ExpressionScript"><![CDATA[VBranchCodeFk]]></TransientExpression>
       </PIMap>
     </ParameterMap>
   </ViewAccessor>
+  <ViewAccessor
+    Name="LocationLov1"
+    ViewObjectName="pqt.dss.itReq.model.lov.vo.LocationLov"
+    RowLevelBinds="true"/>
   <ListBinding
     Name="LOV_AgentName"
     ListVOName="agentDetailLOV1"
@@ -248,48 +250,68 @@
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
-  <SQLQuery><![CDATA[SELECT DssItReqHeader.AGENT_NO_FK,            
-       DssItReqHeader.BRANCH_NOTIF_ID_FK,            
-       DssItReqHeader.BRANCH_STATUS,            
-       DssItReqHeader.DSS_NOTIF_ID_FK,            
-       DssItReqHeader.DSS_STATUS,            
-       DssItReqHeader.EMP_CODE,            
-       DssItReqHeader.EMP_COMPANY_ID_FK,            
-       DssItReqHeader.EMP_DEPT,            
-       DssItReqHeader.EMP_DESIGNATION,            
-       DssItReqHeader.EMP_NAME,            
-       DssItReqHeader.EMP_STATUS_ID_FK,            
-       DssItReqHeader.ENTER_DATE,            
-       DssItReqHeader.HD_ID_PK,            
-       DssItReqHeader.HEAD_DEPT,            
-       DssItReqHeader.HEAD_HR,            
-       DssItReqHeader.HEAD_IT,            
-       DssItReqHeader.LAST_UPDATED_BY,            
-       DssItReqHeader.LAST_UPDATED_DATE,            
-       DssItReqHeader.LN_ID_FK,            
-       DssItReqHeader.LOC_TYPE_ID_FK,            
-       DssItReqHeader.RCVD_BY,            
-       DssItReqHeader.RCVD_DATE,            
-       DssItReqHeader.REQ_COMPANY_ID_FK,            
-       DssItReqHeader.REQ_CONTACT,            
-       DssItReqHeader.REQ_DATE,            
-       DssItReqHeader.REQ_DEPARTMENT,            
-       DssItReqHeader.REQ_DESIGNATION,            
-       DssItReqHeader.REQ_FOR_ID_FK,            
-       DssItReqHeader.REQ_NAME,            
-       DssItReqHeader.REQ_TYPE_ID_FK,            
-       DssItReqHeader.USER_ID_FK,            
-       DssItReqHeader.V_BRANCH_CODE_FK,          
-       DssItReqHeader.It_Request_Doc_No,     
-       (SELECT BR.V_BRANCH_NAME                             
-          FROM VU_DSS_ST_BRANCH BR                             
-         WHERE BR.V_BRANCH_CODE = DssItReqHeader.V_BRANCH_CODE_FK) BRANCH_NAME,      
-       (select ag.V_AGENT_CODE from vu_dss_it_Agent_Detail ag          
-       where ag.N_AGENT_NO = DssItReqHeader.Agent_No_Fk) Agent_Code,          
-       (select ag.AGENT_NAME from vu_dss_it_Agent_Detail ag          
-       where ag.N_AGENT_NO = DssItReqHeader.Agent_No_Fk) Agent_Name, 
-       DssItReqHeader.Workflow_Status, 
-       DssItReqHeader.Workflow_Notification_Id 
+  <ListBinding
+    Name="LovGisLocationIdFk"
+    ListVOName="LocationLov1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="GisLocationIdFk"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="IlLocIdPk"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Location"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery><![CDATA[SELECT DssItReqHeader.AGENT_NO_FK,                
+       DssItReqHeader.BRANCH_NOTIF_ID_FK,                
+       DssItReqHeader.BRANCH_STATUS,                
+       DssItReqHeader.DSS_NOTIF_ID_FK,                
+       DssItReqHeader.DSS_STATUS,                
+       DssItReqHeader.EMP_CODE,                
+       DssItReqHeader.EMP_COMPANY_ID_FK,                
+       DssItReqHeader.EMP_DEPT,                
+       DssItReqHeader.EMP_DESIGNATION,                
+       DssItReqHeader.EMP_NAME,                
+       DssItReqHeader.EMP_STATUS_ID_FK,                
+       DssItReqHeader.ENTER_DATE,                
+       DssItReqHeader.HD_ID_PK,                
+       DssItReqHeader.HEAD_DEPT,                
+       DssItReqHeader.HEAD_HR,                
+       DssItReqHeader.HEAD_IT,                
+       DssItReqHeader.LAST_UPDATED_BY,                
+       DssItReqHeader.LAST_UPDATED_DATE,                
+       DssItReqHeader.LN_ID_FK,                
+       DssItReqHeader.LOC_TYPE_ID_FK,                
+       DssItReqHeader.RCVD_BY,                
+       DssItReqHeader.RCVD_DATE,                
+       DssItReqHeader.REQ_COMPANY_ID_FK,                
+       DssItReqHeader.REQ_CONTACT,                
+       DssItReqHeader.REQ_DATE,                
+       DssItReqHeader.REQ_DEPARTMENT,                
+       DssItReqHeader.REQ_DESIGNATION,                
+       DssItReqHeader.REQ_FOR_ID_FK,                
+       DssItReqHeader.REQ_NAME,                
+       DssItReqHeader.REQ_TYPE_ID_FK,                
+       DssItReqHeader.USER_ID_FK,                
+       DssItReqHeader.V_BRANCH_CODE_FK,              
+       DssItReqHeader.It_Request_Doc_No,         
+       (SELECT BR.V_BRANCH_NAME                                 
+          FROM VU_DSS_ST_BRANCH BR                                 
+         WHERE BR.V_BRANCH_CODE = DssItReqHeader.V_BRANCH_CODE_FK) BRANCH_NAME,          
+       (select ag.V_AGENT_CODE from vu_dss_it_Agent_Detail ag              
+       where ag.N_AGENT_NO = DssItReqHeader.Agent_No_Fk) Agent_Code,              
+       (select ag.AGENT_NAME from vu_dss_it_Agent_Detail ag              
+       where ag.N_AGENT_NO = DssItReqHeader.Agent_No_Fk) Agent_Name,     
+       DssItReqHeader.Workflow_Status,     
+       DssItReqHeader.Workflow_Notification_Id ,    
+       DssItReqHeader.Gis_Location_Id_Fk    
 FROM  DSS_IT_REQ_HEADER DssItReqHeader]]></SQLQuery>
   <EntityUsage
     Name="DssItReqHeader"
@@ -729,6 +751,20 @@ FROM  DSS_IT_REQ_HEADER DssItReqHeader]]></SQLQuery>
     EntityAttrName="WorkflowNotificationId"
     EntityUsage="DssItReqHeader"
     AliasName="WORKFLOW_NOTIFICATION_ID"/>
+  <ViewAttribute
+    Name="GisLocationIdFk"
+    PrecisionRule="true"
+    EntityAttrName="GisLocationIdFk"
+    EntityUsage="DssItReqHeader"
+    AliasName="GIS_LOCATION_ID_FK"
+    LOVName="LovGisLocationIdFk">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewCriteria
     Name="DssItReqHeaderViewCriteria"
     ViewObjectName="pqt.dss.itReq.model.vo.DssItReqHeaderView"

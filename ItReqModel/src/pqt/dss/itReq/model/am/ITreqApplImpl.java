@@ -5,7 +5,10 @@ import java.sql.Types;
 
 import javax.faces.application.FacesMessage;
 
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+
+import javax.servlet.http.HttpSession;
 
 import oracle.jbo.JboException;
 
@@ -210,5 +213,12 @@ public class ITreqApplImpl extends ApplicationModuleImpl implements ITreqAppl {
         fc.addMessage(null, Message);
         txn.rollback();
     }
+    public void setUserSession() {
+        FacesContext fctx = FacesContext.getCurrentInstance();
+        ExternalContext ectx = fctx.getExternalContext();
+        HttpSession userSession = (HttpSession) ectx.getSession(false);
+        userSession.setAttribute("SSV_UserDept", 3);
+        userSession.setAttribute("pUserId",1139);
+    }    
 }
 

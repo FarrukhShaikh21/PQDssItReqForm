@@ -13,6 +13,7 @@ import oracle.adf.view.rich.component.rich.input.RichInputText;
 import oracle.adf.view.rich.component.rich.input.RichSelectOneChoice;
 import oracle.adf.view.rich.component.rich.layout.RichPanelBox;
 import oracle.adf.view.rich.component.rich.layout.RichPanelFormLayout;
+import oracle.adf.view.rich.component.rich.layout.RichPanelGroupLayout;
 import oracle.adf.view.rich.component.rich.layout.RichPanelHeader;
 import oracle.adf.view.rich.component.rich.layout.RichPanelLabelAndMessage;
 import oracle.adf.view.rich.component.rich.layout.RichToolbar;
@@ -71,6 +72,12 @@ public class ITreqUodate {
     private RichPanelLabelAndMessage plam1;
     private RichOutputText ot1;
     private RichInputListOfValues ilov1;
+    private RichOutputText ot2;
+    private RichSelectOneChoice soc9;
+    private UISelectItems si9;
+    private RichPanelGroupLayout pgl1;
+    private RichOutputText ot3;
+    private RichOutputText ot4;
 
     public void setPh1(RichPanelHeader ph1) {
         this.ph1 = ph1;
@@ -476,4 +483,51 @@ public class ITreqUodate {
     }
 
 
+    public void setOt2(RichOutputText ot2) {
+        this.ot2 = ot2;
+    }
+
+    public RichOutputText getOt2() {
+        return ot2;
+    }
+
+    public void setSoc9(RichSelectOneChoice soc9) {
+        this.soc9 = soc9;
+    }
+
+    public RichSelectOneChoice getSoc9() {
+        return soc9;
+    }
+
+    public void setSi9(UISelectItems si9) {
+        this.si9 = si9;
+    }
+
+    public UISelectItems getSi9() {
+        return si9;
+    }
+
+    public void setPgl1(RichPanelGroupLayout pgl1) {
+        this.pgl1 = pgl1;
+    }
+
+    public RichPanelGroupLayout getPgl1() {
+        return pgl1;
+    }
+
+    public void setOt3(RichOutputText ot3) {
+        this.ot3 = ot3;
+    }
+
+    public RichOutputText getOt3() {
+        return ot3;
+    }
+
+    public void setOt4(RichOutputText ot4) {
+        this.ot4 = ot4;
+    }
+
+    public RichOutputText getOt4() {
+        return ot4;
+    }
 }

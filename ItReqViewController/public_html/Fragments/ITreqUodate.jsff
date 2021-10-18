@@ -42,6 +42,25 @@
                 <f:validator binding="#{bindings.AgentName.validator}"/>
             </af:inputListOfValues>
         </af:panelFormLayout>
+        <f:facet name="context">
+            <af:panelGroupLayout id="pgl1" binding="#{backingBeanScope.backing_Fragments_ITreqUodate.pgl1}"
+                                 layout="horizontal">
+                <af:outputText value="(" id="ot4"
+                               binding="#{backingBeanScope.backing_Fragments_ITreqUodate.ot4}"/>
+                <af:selectOneChoice value="#{bindings.GisLocationIdFk.inputValue}"
+                                    label="#{bindings.GisLocationIdFk.label}"
+                                    required="#{bindings.GisLocationIdFk.hints.mandatory}"
+                                    shortDesc="#{bindings.GisLocationIdFk.hints.tooltip}" id="soc9"
+                                    binding="#{backingBeanScope.backing_Fragments_ITreqUodate.soc9}" readOnly="true"
+                                    simple="true" contentStyle="font-weight:bold">
+                    <f:selectItems value="#{bindings.GisLocationIdFk.items}" id="si9"
+                                   binding="#{backingBeanScope.backing_Fragments_ITreqUodate.si9}"/>
+                    <f:validator binding="#{bindings.GisLocationIdFk.validator}"/>
+                </af:selectOneChoice>
+                <af:outputText value=")" id="ot3"
+                               binding="#{backingBeanScope.backing_Fragments_ITreqUodate.ot3}"/>
+            </af:panelGroupLayout>
+        </f:facet>
     </af:panelHeader>
     <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_Fragments_ITreqUodate-->
     <af:panelBox text="Requested By" id="pb1" binding="#{backingBeanScope.backing_Fragments_ITreqUodate.pb1}"

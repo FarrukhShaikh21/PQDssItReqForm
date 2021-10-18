@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="BranchVO"
-  Version="12.2.1.0.31"
+  Version="12.2.1.11.57"
   InheritPersonalization="merge"
   BindingStyle="OracleName"
   CustomQuery="true"
@@ -20,13 +20,14 @@
     Name="VC_UserIdFk"
     Kind="viewcriteria"
     Type="oracle.jbo.domain.Number"/>
-  <SQLQuery><![CDATA[select SBR.V_BRANCH_CODE,         
-       SBR.V_BRANCH_NAME,         
-       BR.USER_ID_FK,         
-       SU.EMP_ID_FK         
-  from dss_sm_user_branch BR, VU_DSS_ST_BRANCH SBR, DSS_SM_USERS SU         
- WHERE SBR.V_BRANCH_CODE = BR.BRANCH_CODE         
-   AND SU.USER_ID_PK = BR.USER_ID_FK]]></SQLQuery>
+  <SQLQuery><![CDATA[select SBR.V_BRANCH_CODE,                       
+       SBR.V_BRANCH_NAME,                       
+       BR.USER_ID_FK,                       
+       SU.EMP_ID_FK ,     
+       SU.USER_ID_PK     
+  from PQT_IL_LOC_BRANCH_DTL BR, VU_DSS_ST_BRANCH SBR, DSS_SM_USERS SU                       
+ WHERE SBR.V_BRANCH_CODE = BR.BRANCH_CODE                       
+   AND  BR.IL_LOC_ID_FK=SU.GIS_LOCATION_ID_FK]]></SQLQuery>
   <ViewAttribute
     Name="VBranchCode"
     IsPersistent="false"
@@ -92,6 +93,16 @@
     AliasName="EMP_ID_FK"
     Expression="EMP_ID_FK"
     SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="UserIdPk"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="USER_ID_PK"
+    Expression="USER_ID_PK"
+    SQLType="NUMERIC"/>
   <ViewCriteria
     Name="BranchVOCriteria"
     ViewObjectName="pqt.dss.itReq.model.lov.vo.BranchVO"
@@ -127,8 +138,8 @@
         IsBindVarValue="true"
         Required="Optional"/>
       <ViewCriteriaItem
-        Name="UserIdFk"
-        ViewAttribute="UserIdFk"
+        Name="UserIdPk"
+        ViewAttribute="UserIdPk"
         Operator="="
         Conjunction="AND"
         Value=":VC_UserIdFk"

@@ -120,5 +120,7 @@
     <methodAction id="Apply" RequiresUpdateModel="true" Action="invokeMethod" MethodName="Apply"
                   IsViewObjectMethod="false" DataControl="ITreqApplDataControl"
                   InstanceName="data.ITreqApplDataControl.dataProvider"/>
+    <list IterBinding="DssItReqHeaderView1Iterator" StaticList="false" Uses="LovGisLocationIdFk" id="GisLocationIdFk"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
   </bindings>
 </pageDefinition>
